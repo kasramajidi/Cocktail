@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Form() {
     const [inputData, setinputData] = useState(""); 
@@ -23,14 +24,14 @@ function Form() {
                 setError("No Matching Cocktails Found...");
             }
         } catch (err) {
-            setError("No Matching Cocktails Found...");
+            setError(err);
         }
 
         setLoading(false);
     };
 
     return (
-        <section className="w-full flex flex-col items-center justify-center min-h-screen">
+        <section className="w-full flex flex-col items-center justify-center">
             <div className="border-2 border-white p-4 rounded-md shadow-lg w-1/2 bg-white">
                 <div className="flex items-center">
                     <input
@@ -65,12 +66,12 @@ function Form() {
                     <div key={drink.idDrink} className="w-[352px] bg-white shadow-lg rounded-xl overflow-hidden">
                         <img src={drink.strDrinkThumb} alt={drink.strDrink} className="w-full h-[200px] object-cover" />
                         <div className="px-4 flex flex-col items-start gap-y-1 py-[20px]">
-                            <h4 className={'text-[32px]'}>{drink.strDrink}</h4>
+                            <h4 className={'text-[30px]'}>{drink.strIngredient1}</h4>
                             <h4 className="text-[18px] font-bold">{drink.strDrink}</h4>
                             <span className="text-[14px] text-gray-500">{drink.strCategory}</span>
-                            <button className="text-white bg-[#10B981] px-3 py-[6px] rounded-xl mt-2 hover:bg-[#059e72]">
+                            <Link to={`/product/${drink.idDrink}`} className="text-white bg-[#10B981] px-3 py-[6px] rounded-xl mt-2 hover:bg-[#059e72] cursor-pointer">
                                 Details
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 ))}
