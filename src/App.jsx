@@ -4,6 +4,7 @@ import Newsletter from './pages/Newsletter';
 import About from './pages/about';
 import Home from './pages/Home';
 import ProductDetails from "./pages/ProductDetails"
+import Page404 from './pages/Page404';
 
 function App() {
     return (
@@ -14,6 +15,7 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/newsletter" element={<Newsletter />} />
                 <Route path='product/:id' element={<ProductDetails/>}/>
+                <Route path='*' element={<Page404/>}/>
             </Routes>
         </Router>
     );
